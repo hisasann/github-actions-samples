@@ -1,0 +1,11 @@
+name: Cron!
+on:
+  schedule:
+    - cron: "*/1 * * * *"
+
+jobs:
+  build:
+    name: Greeting
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Cron!"
