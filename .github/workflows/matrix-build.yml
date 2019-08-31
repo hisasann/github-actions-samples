@@ -3,17 +3,16 @@ on: push
 
 jobs:
   build:
-    name: Node.js ${{ matrix.os }} ${{ matrix.node }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node: [ '10', '8' ]
-      name: Node ${{ matrix.node }} sample
-      steps:
-        - uses: actions/checkout@master
-        - name: Setup node
-          uses: actions/setup-node@v1
-          with:
-            node-version: ${{ matrix.node }}
-        - run: yarn install
-        - run: yarn test
+    name: Node.js ${{ matrix.os }} ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: yarn install
+      - run: yarn test
