@@ -136,6 +136,70 @@ jobs:
       NAME: hisasann
 ```
 
+## マトリクスビルドActions
+
+[github-actions-samples/matrix-build.yml](https://github.com/hisasann/github-actions-samples/blob/master/.github/workflows/matrix-build.yml)
+
+このあたりになってくると、個人的にかなり使うジャンルに入ってきました。
+
+いろんな環境で `npm test` が通るかは、 npm module を開発するときにとても重宝するので、 github 上でこうゆうテストが実行できるのはありがたいです！
+
+```yaml
+jobs:
+  build:
+    name: Node.js ${{ matrix.os }} ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [ '10', '8' ]
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: yarn install
+      - run: yarn test
+        env:
+          NAME: hisasann
+```
+
+### appveyor.ymlでの書き方
+
+余談ですが、普段この手のテストは `appveyor` を使っているので、その感じを書いておきます。
+
+```yaml
+version: "{build}"
+
+clone_depth: 10
+
+init:
+  - git config --global core.autocrlf false
+
+environment:
+  matrix:
+    # node.js
+    - nodejs_version: 8
+    - nodejs_version: 10
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - IF %nodejs_version% LSS 8 npm -g install npm@5
+  - npm install --ignore-scripts
+
+build: off
+
+test_script:
+  - node --version && npm --version
+  - npm run test
+
+matrix:
+  fast_finish: false
+```
+
+[typescript-nuxtjs-boilerplate/appveyor.yml](https://github.com/typescript-nuxtjs-boilerplate/typescript-nuxtjs-boilerplate/blob/master/appveyor.yml)
+
 ## 📚 参考記事
 
 [新 GitHub Actions 入門 - 生産性向上ブログ](https://www.kaizenprogrammer.com/entry/2019/08/18/205010)
