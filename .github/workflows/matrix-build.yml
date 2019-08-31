@@ -14,7 +14,4 @@ jobs:
         uses: actions/setup-node@v1
         with:
           version: ${{ matrix.node }}
-      - run: npm install
-      - run: npm test
-        env:
-          NAME: hisasann
+      - run: node -v
