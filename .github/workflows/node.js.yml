@@ -1,0 +1,9 @@
+name: Exec node.js!
+on: push
+
+jobs:
+  build:
+    name: Greeting
+    runs-on: ubuntu-latest
+    steps:
+      - run: node -e 'console.log("Hello, World!");'
