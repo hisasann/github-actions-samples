@@ -26,6 +26,18 @@ jobs: # ジョブを定義
 
 [空コミットで実装前にプルリクエストを出す - Qiita](https://qiita.com/katsukii/items/5368598cbecbaefd1ed8)
 
+## Cronで一定間隔で実行するActions
+
+[github-actions-samples/cron.yml](https://github.com/hisasann/github-actions-samples/blob/master/.github/workflows/cron.yml)
+
+一分間隔で実行したい場合は以下のように書きます。
+
+```yaml
+on:
+  schedule:
+    - cron: "*/1 * * * *"
+```
+
 ## 📚 参考記事
 
 [新 GitHub Actions 入門 - 生産性向上ブログ](https://www.kaizenprogrammer.com/entry/2019/08/18/205010)
