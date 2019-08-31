@@ -1,0 +1,16 @@
+name: Setup Node!
+on: push
+
+jobs:
+  build:
+    name: Greeting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - run: npm install
+        env:
+          NAME: hisasann
+      - run: npm test
