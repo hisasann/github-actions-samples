@@ -54,6 +54,25 @@ jobs:
       - run: echo "Hello, World 3"
 ```
 
+## シンプルにnode.jsを実行するActions
+
+[github-actions-samples/node.js.yml](https://github.com/hisasann/github-actions-samples/blob/master/.github/workflows/node.js.yml)
+
+```yaml
+jobs:
+  build:
+    name: Greeting
+    runs-on: ubuntu-latest
+    steps:
+      - run: node -e 'console.log("Hello, World!");'
+```
+
+`runs-on` で指定している環境内で使える CLI コマンドや、インストールされているものは以下を参照してください。
+
+`TypeScript` や `Parcel` なども入っていて、 `AWS-CLI` も入っているので、困ることはなさそうです。
+
+[Software in virtual environments for GitHub Actions - GitHub Help](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions)
+
 ## 📚 参考記事
 
 [新 GitHub Actions 入門 - 生産性向上ブログ](https://www.kaizenprogrammer.com/entry/2019/08/18/205010)
