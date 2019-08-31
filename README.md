@@ -38,6 +38,22 @@ on:
     - cron: "*/1 * * * *"
 ```
 
+## ジョブの実行順序を制御するActions
+
+[github-actions-samples/needs.yml](https://github.com/hisasann/github-actions-samples/blob/master/.github/workflows/needs.yml)
+
+ジョブは並列に実行されますが、 `job1` が終わったあとに `job2` を実行したいなどの制御が **needs** で可能になります。
+
+```yaml
+jobs:
+  job3:
+    name: Greeting3
+    needs: [job1, job2]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, World 3"
+```
+
 ## 📚 参考記事
 
 [新 GitHub Actions 入門 - 生産性向上ブログ](https://www.kaizenprogrammer.com/entry/2019/08/18/205010)
