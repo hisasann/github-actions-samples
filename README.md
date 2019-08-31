@@ -90,6 +90,52 @@ jobs:
 
 [Virtual environments for GitHub Actions - GitHub Help](https://help.github.com/en/articles/virtual-environments-for-github-actions#environment-variables)
 
+## Marketplaceに公開されているnode.jsを使ってみる
+
+[github-actions-samples/setup-node.yml](https://github.com/hisasann/github-actions-samples/blob/master/.github/workflows/setup-node.yml)
+
+```yaml
+jobs:
+  build:
+    name: Greeting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - run: npm install
+      - run: npm test
+        env:
+          NAME: hisasann
+```
+
+以下の公開されている `setup-node` を使ってみました。
+
+[actions/setup-node: Set up your GitHub Actions workflow with a specific version of node.js](https://github.com/actions/setup-node)
+
+また、自分でマーケットプレイスに公開することもできるようなので、作りたいのを見つかったら公開してみたいと思います。
+
+[【GitHub Actions】Slack通知用のactionをTypeScriptで開発してみた - Qiita](https://qiita.com/homines22/items/0bc6c17e038b35fc8113)
+
+余談ですが、 **env** の使い方で、以下のようにハイフンのブロック範囲を間違えて env を指定すると `npm test` に渡らないので注意が必要です。
+
+```yaml
+  - run: npm install
+    env:
+      NAME: hisasann
+  - run: npm test
+```
+
+こっちが正解🌭
+
+```yaml
+  - run: npm install
+  - run: npm test
+    env:
+      NAME: hisasann
+```
+
 ## 📚 参考記事
 
 [新 GitHub Actions 入門 - 生産性向上ブログ](https://www.kaizenprogrammer.com/entry/2019/08/18/205010)
