@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [ '10', '8' ]
+        node: [ '10' ]
     steps:
       - uses: actions/checkout@master
       - name: Setup node

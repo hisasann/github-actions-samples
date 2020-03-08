@@ -1,4 +1,4 @@
-console.log(process.env.NAME);
+console.log(process.env.NAME, 1);
 
 function sum(a, b) {
   return a + b;
