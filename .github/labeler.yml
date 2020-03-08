@@ -1,0 +1,4 @@
+web:
+  - web/**/*
+test:
+  - __tests__/**/*.test.js
