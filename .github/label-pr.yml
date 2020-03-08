@@ -1,0 +1,2 @@
+- regExp: ".*\\.ts+$"
+  labels: ["typescript"]
