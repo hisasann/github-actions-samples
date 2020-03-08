@@ -1,5 +1,5 @@
 # Workflow to associate labels automatically
-name: labeler
+name: decathlon-labeler
 # Trigger the workflow on pull request events
 on: [pull_request]
 jobs:
