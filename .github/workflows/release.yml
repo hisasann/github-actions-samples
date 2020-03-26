@@ -1,0 +1,11 @@
+name: Hello, Release!
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Greeting
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, Release!"
